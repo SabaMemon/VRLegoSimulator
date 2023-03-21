@@ -10,10 +10,7 @@ public class Spawn : MonoBehaviour
     public Transform Controller;
 
     float brickDistance = 0.1f;
-    //Vector3 initialScale = new Vector3(0.3f, 0.3f, 0.3f);
-    //Vector3 finallScale = new Vector3(1.0f, 1.0f, 1.0f);
-
- 
+    bool drop = false;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +21,15 @@ public class Spawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (brickObj != null)
+        float yRotation = Controller.eulerAngles.y;
+        print(yRotation);
+        if (brickObj != null && drop == true)
         {
+            brickObj.transform.eulerAngles = new Vector3(0, yRotation, 0);
             brickObj.transform.parent = null;
             brickObj.GetComponent<Rigidbody>().isKinematic = false;
             //brickObj.transform.position = brickObj.transform.position;
-            brickObj.transform.localRotation = Quaternion.identity;
+            drop = false;
         }
         
     }
@@ -39,12 +39,16 @@ public class Spawn : MonoBehaviour
     {
         brickObj = GameObject.Instantiate(brickPrefab);
         brickObj.GetComponent<MeshRenderer>().material = brickMat;
-        brickObj.transform.position = Controller.transform.position + Controller.transform.forward * brickDistance;
-        brickObj.transform.localRotation = transform.rotation;
+        brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
+        brickObj.transform.localRotation = Controller.rotation;
         brickObj.transform.Rotate(0, 0, 0, Space.Self);
-        brickObj.transform.parent = Controller.transform;
+        brickObj.transform.parent = Controller;
         brickObj.GetComponent<Rigidbody>().isKinematic = true;
     }
 
+    public void DropBrick()
+    {
+        drop = true;
+    }
 
 }

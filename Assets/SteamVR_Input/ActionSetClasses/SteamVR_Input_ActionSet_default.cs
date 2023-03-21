@@ -113,6 +113,14 @@ namespace Valve.VR
             }
         }
         
+        public virtual SteamVR_Action_Boolean DropBrick
+        {
+            get
+            {
+                return SteamVR_Actions.default_DropBrick;
+            }
+        }
+        
         public virtual SteamVR_Action_Vibration Haptic
         {
             get
