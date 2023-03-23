@@ -46,18 +46,18 @@ public class Spawn : MonoBehaviour
                 if (hit.collider.CompareTag("Brick"))
                 {
                     Transform tempBrick = hit.collider.GetComponent<Transform>();
-                    print(tempBrick.eulerAngles.x);
-                    print(tempBrick.eulerAngles.z);
+                    //print((int)tempBrick.eulerAngles.x);
+                    //print((int)tempBrick.eulerAngles.z);
                     
-                    if (tempBrick.eulerAngles.x == 0 && tempBrick.eulerAngles.z == 0 && ((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.5f) && brickObj != null && tempBrick.parent == null)
+                    if ((int)tempBrick.eulerAngles.x == 0 && (int)tempBrick.eulerAngles.z == 0 && ((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f) && brickObj != null && tempBrick.parent == null)
                     {
-                        print((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude);
+                        //print((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude);
                         brickObj.transform.parent = null;
                         brickObj.GetComponent<Rigidbody>().isKinematic = false;
                         Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.35f, tempBrick.position.z);
-                        Vector3 newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                        //Vector3 newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
                         brickObj.transform.position = newPos;
-                        brickObj.transform.eulerAngles = newRot;
+                        //brickObj.transform.eulerAngles = newRot;
                         //brickObj.transform.position.y = tempBrick.transform.position.y + 0.35f;
                     }
                 }
@@ -74,10 +74,6 @@ public class Spawn : MonoBehaviour
             brickObj.transform.parent = null;
             brickObj.GetComponent<Rigidbody>().isKinematic = false;
             drop = false;
-        }
-        else if (brickObj != null)
-        {
-
         }
         
     }
