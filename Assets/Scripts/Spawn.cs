@@ -22,7 +22,6 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
-        print(yRotation);
         if (brickObj != null && drop == true)
         {
             brickObj.transform.eulerAngles = new Vector3(0, yRotation, 0);
