@@ -9,7 +9,7 @@ public class Spawn : MonoBehaviour
     public GameObject brickPrefab;
     public Transform Controller;
     public float fireRate = 0.1f;
-    public float laserRange = 1f;
+    public float laserRange = 2f;
 
     float brickDistance = 0.1f;
     bool drop = false;
@@ -29,8 +29,8 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
-        Vector3 newRot;
-        bool brickPut false;
+        Vector3 newRot = new Vector3(0,0,0) ;
+        bool brickPut = false;
 
         if (Time.time > nextFire)
         {
@@ -47,21 +47,45 @@ public class Spawn : MonoBehaviour
                 
                 if (hit.collider.CompareTag("Brick"))
                 {
+                    print("brick found");
                     Transform tempBrick = hit.collider.GetComponent<Transform>();
-                    //print((int)tempBrick.eulerAngles.x);
-                    //print((int)tempBrick.eulerAngles.z);
                     
-                    if ((int)tempBrick.eulerAngles.x == 0 && (int)tempBrick.eulerAngles.z == 0 && ((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f) && brickObj != null && tempBrick.parent == null)
+                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1.5f))
                     {
-                        //print((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude);
-                        brickObj.transform.parent = null;
-                        brickObj.GetComponent<Rigidbody>().isKinematic = false;
-                        Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.36f, tempBrick.position.z);
-                        newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                        brickObj.transform.position = newPos;
-                        brickPut = true;
-                        //brickObj.transform.eulerAngles = newRot;
-                        
+                        print("position works");
+                        print("xAng = " + (int)tempBrick.eulerAngles.x);
+                        print("zAng = " + (int)tempBrick.eulerAngles.z);
+                        if(tempBrick.rotation.x < 0 && (int)tempBrick.eulerAngles.x >= 350)
+                        {
+                            tempBrick.eulerAngles = new Vector3(0, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                        }
+                        if (tempBrick.rotation.z < 0 && (int)tempBrick.eulerAngles.z >= 350)
+                        {
+                            tempBrick.eulerAngles = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, 0);
+                        }
+                        print("xAng2 = " + (int)tempBrick.eulerAngles.x);
+                        print("zAng2 = " + (int)tempBrick.eulerAngles.z);
+                        if (((int)tempBrick.eulerAngles.x == 0 || (int)tempBrick.eulerAngles.x == -0) && ((int)tempBrick.eulerAngles.z == 0 || (int)tempBrick.eulerAngles.z == -0))
+                        {
+                            print("angles work");
+                            if (brickObj != null)
+                            {
+                                if (tempBrick.parent == null)
+                                {
+                                    brickObj.transform.parent = null;
+                                    brickObj.GetComponent<Rigidbody>().isKinematic = false;
+                                    Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.36f, tempBrick.position.z);
+                                    newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                    brickObj.transform.position = newPos;
+                                    brickPut = true;
+                                }
+                            }
+                        }
+                    }
+                    if (brickPut == true)
+                    {
+                        brickObj.transform.eulerAngles = newRot; 
+                        brickPut = false;
                     }
                 }
             }
@@ -69,11 +93,6 @@ public class Spawn : MonoBehaviour
             {
                 laserLine.SetPosition(1, rayOrigin + (Controller.forward * laserRange));
             }
-        }
-
-        if(brickPut == true)
-        {
-
         }
 
         if (brickObj != null && drop == true)
@@ -85,7 +104,6 @@ public class Spawn : MonoBehaviour
         }
         
     }
-
 
     public void InitializeBrick(Material brickMat)
     {
