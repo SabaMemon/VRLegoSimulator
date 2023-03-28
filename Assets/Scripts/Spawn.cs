@@ -29,6 +29,8 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
+        Vector3 newRot;
+        bool brickPut false;
 
         if (Time.time > nextFire)
         {
@@ -54,11 +56,12 @@ public class Spawn : MonoBehaviour
                         //print((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude);
                         brickObj.transform.parent = null;
                         brickObj.GetComponent<Rigidbody>().isKinematic = false;
-                        Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.35f, tempBrick.position.z);
-                        //Vector3 newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                        Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.36f, tempBrick.position.z);
+                        newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
                         brickObj.transform.position = newPos;
+                        brickPut = true;
                         //brickObj.transform.eulerAngles = newRot;
-                        //brickObj.transform.position.y = tempBrick.transform.position.y + 0.35f;
+                        
                     }
                 }
             }
@@ -66,6 +69,11 @@ public class Spawn : MonoBehaviour
             {
                 laserLine.SetPosition(1, rayOrigin + (Controller.forward * laserRange));
             }
+        }
+
+        if(brickPut == true)
+        {
+
         }
 
         if (brickObj != null && drop == true)
