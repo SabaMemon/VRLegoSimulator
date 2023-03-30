@@ -8,10 +8,10 @@ public class Spawn : MonoBehaviour
     GameObject brickObj = null; //made public because it's referenced in multiple functions
     public GameObject brickPrefab;
     public Transform Controller;
-<<<<<<< HEAD
+
     public float fireRate = 0.1f;
     public float laserRange = 2f;
-=======
+
     public Material brickMat;
     public Material blueBrick;
     public Material greenBrick;
@@ -19,8 +19,6 @@ public class Spawn : MonoBehaviour
     public Material redBrick;
     public Material purpleBrick;
     public MenuLineRendererSettings menu;
-
->>>>>>> main
 
     float brickDistance = 0.1f;
     bool drop = false;
@@ -40,7 +38,6 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
-<<<<<<< HEAD
         Vector3 newRot = new Vector3(0,0,0) ;
         bool brickPut = false;
 
@@ -107,8 +104,6 @@ public class Spawn : MonoBehaviour
             }
         }
 
-=======
->>>>>>> main
         if (brickObj != null && drop == true)
         {
             brickObj.transform.eulerAngles = new Vector3(0, yRotation, 0);
@@ -119,9 +114,6 @@ public class Spawn : MonoBehaviour
         
     }
 
-<<<<<<< HEAD
-    public void InitializeBrick(Material brickMat)
-=======
     public void SetBrickMat(int color)
     {
         switch (color)
@@ -150,7 +142,6 @@ public class Spawn : MonoBehaviour
     }
 
     public void InitializeBrick()
->>>>>>> main
     {
         brickObj = GameObject.Instantiate(brickPrefab);
         print("MAT AFTER SETTING" + brickMat);
