@@ -53,18 +53,18 @@ public class Spawn : MonoBehaviour
                     if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1.5f))
                     {
                         print("position works");
-                        print("xAng = " + (int)tempBrick.eulerAngles.x);
-                        print("zAng = " + (int)tempBrick.eulerAngles.z);
-                        if(tempBrick.rotation.x < 0 && (int)tempBrick.eulerAngles.x >= 350)
-                        {
-                            tempBrick.eulerAngles = new Vector3(0, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                        }
-                        if (tempBrick.rotation.z < 0 && (int)tempBrick.eulerAngles.z >= 350)
-                        {
-                            tempBrick.eulerAngles = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, 0);
-                        }
-                        print("xAng2 = " + (int)tempBrick.eulerAngles.x);
-                        print("zAng2 = " + (int)tempBrick.eulerAngles.z);
+                        //print("xAng = " + (int)tempBrick.eulerAngles.x);
+                        //print("zAng = " + (int)tempBrick.eulerAngles.z);
+                        //if(tempBrick.rotation.x < 0 && (int)tempBrick.eulerAngles.x >= 350)
+                        //{
+                        //    tempBrick.eulerAngles = new Vector3(0, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                        //}
+                        //if (tempBrick.rotation.z < 0 && (int)tempBrick.eulerAngles.z >= 350)
+                        //{
+                        //    tempBrick.eulerAngles = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, 0);
+                        //}
+                        //print("xAng2 = " + (int)tempBrick.eulerAngles.x);
+                        //print("zAng2 = " + (int)tempBrick.eulerAngles.z);
                         if (((int)tempBrick.eulerAngles.x == 0 || (int)tempBrick.eulerAngles.x == -0) && ((int)tempBrick.eulerAngles.z == 0 || (int)tempBrick.eulerAngles.z == -0))
                         {
                             print("angles work");
