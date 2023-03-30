@@ -8,8 +8,19 @@ public class Spawn : MonoBehaviour
     GameObject brickObj = null; //made public because it's referenced in multiple functions
     public GameObject brickPrefab;
     public Transform Controller;
+<<<<<<< HEAD
     public float fireRate = 0.1f;
     public float laserRange = 2f;
+=======
+    public Material brickMat;
+    public Material blueBrick;
+    public Material greenBrick;
+    public Material yellowBrick;
+    public Material redBrick;
+    public Material purpleBrick;
+    public MenuLineRendererSettings menu;
+
+>>>>>>> main
 
     float brickDistance = 0.1f;
     bool drop = false;
@@ -29,6 +40,7 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
+<<<<<<< HEAD
         Vector3 newRot = new Vector3(0,0,0) ;
         bool brickPut = false;
 
@@ -95,6 +107,8 @@ public class Spawn : MonoBehaviour
             }
         }
 
+=======
+>>>>>>> main
         if (brickObj != null && drop == true)
         {
             brickObj.transform.eulerAngles = new Vector3(0, yRotation, 0);
@@ -105,9 +119,41 @@ public class Spawn : MonoBehaviour
         
     }
 
+<<<<<<< HEAD
     public void InitializeBrick(Material brickMat)
+=======
+    public void SetBrickMat(int color)
+    {
+        switch (color)
+        {
+            case 1:
+                brickMat = redBrick;
+                break;
+            case 2:
+                brickMat = yellowBrick;
+                break;
+            case 3:
+                brickMat = greenBrick;
+                break;
+            case 4:
+                brickMat = purpleBrick;
+                break;
+            case 5:
+                brickMat = blueBrick;
+                break;
+            default:
+                brickMat = redBrick;
+                break;
+        }
+        print("brick mat: " + brickMat);
+        print("menu color num: " + color);
+    }
+
+    public void InitializeBrick()
+>>>>>>> main
     {
         brickObj = GameObject.Instantiate(brickPrefab);
+        print("MAT AFTER SETTING" + brickMat);
         brickObj.GetComponent<MeshRenderer>().material = brickMat;
         brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
         brickObj.transform.localRotation = Controller.rotation;

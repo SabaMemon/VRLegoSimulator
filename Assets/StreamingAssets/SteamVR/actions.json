@@ -58,6 +58,14 @@
       "type": "boolean"
     },
     {
+      "name": "/actions/default/in/MenuLaser",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/SelectButton",
+      "type": "boolean"
+    },
+    {
       "name": "/actions/default/out/Haptic",
       "type": "vibration"
     },
