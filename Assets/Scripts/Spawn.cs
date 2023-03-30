@@ -8,6 +8,14 @@ public class Spawn : MonoBehaviour
     GameObject brickObj = null; //made public because it's referenced in multiple functions
     public GameObject brickPrefab;
     public Transform Controller;
+    public Material brickMat;
+    public Material blueBrick;
+    public Material greenBrick;
+    public Material yellowBrick;
+    public Material redBrick;
+    public Material purpleBrick;
+    public MenuLineRendererSettings menu;
+
 
     float brickDistance = 0.1f;
     bool drop = false;
@@ -33,10 +41,37 @@ public class Spawn : MonoBehaviour
         
     }
 
+    public void SetBrickMat(int color)
+    {
+        switch (color)
+        {
+            case 1:
+                brickMat = redBrick;
+                break;
+            case 2:
+                brickMat = yellowBrick;
+                break;
+            case 3:
+                brickMat = greenBrick;
+                break;
+            case 4:
+                brickMat = purpleBrick;
+                break;
+            case 5:
+                brickMat = blueBrick;
+                break;
+            default:
+                brickMat = redBrick;
+                break;
+        }
+        print("brick mat: " + brickMat);
+        print("menu color num: " + color);
+    }
 
-    public void InitializeBrick(Material brickMat)
+    public void InitializeBrick()
     {
         brickObj = GameObject.Instantiate(brickPrefab);
+        print("MAT AFTER SETTING" + brickMat);
         brickObj.GetComponent<MeshRenderer>().material = brickMat;
         brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
         brickObj.transform.localRotation = Controller.rotation;

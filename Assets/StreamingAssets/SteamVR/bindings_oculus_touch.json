@@ -338,7 +338,7 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/menulaser"
+                     "output" : "/actions/default/in/selectbutton"
                   }
                },
                "mode" : "button",
@@ -347,11 +347,29 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/menulaser"
+                     "output" : "/actions/default/in/selectbutton"
                   }
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/menulaser"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/grip"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/menulaser"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/grip"
             }
          ]
       },
