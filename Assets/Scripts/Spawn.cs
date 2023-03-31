@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+//https://stackoverflow.com/questions/40752083/how-to-find-child-of-a-gameobject-or-the-script-attached-to-child-gameobject-via 
 
 public class Spawn : MonoBehaviour
 {
@@ -9,7 +10,6 @@ public class Spawn : MonoBehaviour
     public GameObject brickPrefab;
     public Transform Controller;
 
-<<<<<<< HEAD
     public float fireRate = 0.1f;
     public float laserRange = 2f;
 
@@ -19,10 +19,7 @@ public class Spawn : MonoBehaviour
     public Material yellowBrick;
     public Material redBrick;
     public Material purpleBrick;
-    public MenuLineRendererSettings menu;
 
-=======
->>>>>>> parent of 2847b3c (Modified menu script to implement brick material change (incomplete))
     float brickDistance = 0.1f;
     bool drop = false;
     WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
@@ -117,11 +114,42 @@ public class Spawn : MonoBehaviour
         
     }
 
+    public void SetBrickMat(int color)
+    {
+        switch (color)
+        {
+            case 1:
+                brickMat = redBrick;
+                break;
+            case 2:
+                brickMat = yellowBrick;
+                break;
+            case 3:
+                brickMat = greenBrick;
+                break;
+            case 4:
+                brickMat = blueBrick;
+                break;
+            case 5:
+                brickMat = purpleBrick;
+                break;
+            default:
+                brickMat = redBrick;
+                break;
+        }
+    }
 
-    public void InitializeBrick(Material brickMat)
+    public void InitializeBrick()
     {
         brickObj = GameObject.Instantiate(brickPrefab);
+
         brickObj.GetComponent<MeshRenderer>().material = brickMat;
+        for (int i = 0; i < brickObj.transform.childCount; i++)
+        {
+            GameObject child = brickObj.transform.GetChild(i).gameObject;
+            child.GetComponent<MeshRenderer>().material = brickMat;
+        }
+
         brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
         brickObj.transform.localRotation = Controller.rotation;
         brickObj.transform.Rotate(0, 0, 0, Space.Self);
