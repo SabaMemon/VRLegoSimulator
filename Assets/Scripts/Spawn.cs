@@ -9,6 +9,7 @@ public class Spawn : MonoBehaviour
     public GameObject brickPrefab;
     public Transform Controller;
 
+<<<<<<< HEAD
     public float fireRate = 0.1f;
     public float laserRange = 2f;
 
@@ -20,6 +21,8 @@ public class Spawn : MonoBehaviour
     public Material purpleBrick;
     public MenuLineRendererSettings menu;
 
+=======
+>>>>>>> parent of 2847b3c (Modified menu script to implement brick material change (incomplete))
     float brickDistance = 0.1f;
     bool drop = false;
     WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
@@ -114,37 +117,10 @@ public class Spawn : MonoBehaviour
         
     }
 
-    public void SetBrickMat(int color)
-    {
-        switch (color)
-        {
-            case 1:
-                brickMat = redBrick;
-                break;
-            case 2:
-                brickMat = yellowBrick;
-                break;
-            case 3:
-                brickMat = greenBrick;
-                break;
-            case 4:
-                brickMat = purpleBrick;
-                break;
-            case 5:
-                brickMat = blueBrick;
-                break;
-            default:
-                brickMat = redBrick;
-                break;
-        }
-        print("brick mat: " + brickMat);
-        print("menu color num: " + color);
-    }
 
-    public void InitializeBrick()
+    public void InitializeBrick(Material brickMat)
     {
         brickObj = GameObject.Instantiate(brickPrefab);
-        print("MAT AFTER SETTING" + brickMat);
         brickObj.GetComponent<MeshRenderer>().material = brickMat;
         brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
         brickObj.transform.localRotation = Controller.rotation;

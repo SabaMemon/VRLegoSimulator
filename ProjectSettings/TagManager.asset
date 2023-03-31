@@ -3,6 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
 <<<<<<< HEAD
   - Brick
@@ -11,6 +12,9 @@ TagManager:
   - FxTemporaire
   - menu_btn
 >>>>>>> main
+=======
+  tags: []
+>>>>>>> parent of 2847b3c (Modified menu script to implement brick material change (incomplete))
   layers:
   - Default
   - TransparentFX
