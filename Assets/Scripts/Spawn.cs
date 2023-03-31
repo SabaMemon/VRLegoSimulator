@@ -11,7 +11,7 @@ public class Spawn : MonoBehaviour
     public Transform Controller;
 
     public float fireRate = 0.1f;
-    public float laserRange = 2f;
+    float laserRange = 1.5f;
 
     public Material brickMat;
     public Material blueBrick;
@@ -50,7 +50,7 @@ public class Spawn : MonoBehaviour
             RaycastHit hit;
             laserLine.SetPosition(0, Controller.position);
 
-            if (Physics.Raycast(Controller.position, Controller.forward, out hit, laserRange))
+            if (Physics.Raycast(Controller.position, (-1f)*Controller.up, out hit, laserRange))
             {
                 laserLine.SetPosition(1, hit.point);
                 
@@ -59,7 +59,7 @@ public class Spawn : MonoBehaviour
                     print("brick found");
                     Transform tempBrick = hit.collider.GetComponent<Transform>();
                     
-                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1.5f))
+                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1f))
                     {
                         print("position works");
                         //print("xAng = " + (int)tempBrick.eulerAngles.x);
@@ -100,7 +100,7 @@ public class Spawn : MonoBehaviour
             }
             else
             {
-                laserLine.SetPosition(1, rayOrigin + (Controller.forward * laserRange));
+                laserLine.SetPosition(1, rayOrigin + ((-1f) * Controller.up * laserRange));
             }
         }
 
