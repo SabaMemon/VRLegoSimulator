@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: -3992996794951064262}
   m_Layer: 0
   m_Name: Brick 4x1
-  m_TagString: Untagged
+  m_TagString: brick_4x1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -421,7 +421,7 @@ Transform:
   m_GameObject: {fileID: 7766460064236622388}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 0.25, z: 0.25}
+  m_LocalScale: {x: 1, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7230840425050678873}
