@@ -46,8 +46,10 @@ public class MenuLineRendererSettings : MonoBehaviour
             //if (Physics.Raycast(Controller.position, Controller.forward, out hit, 10f))
             {
                 laserLine.SetPosition(1, hit.point);
+                print("hitting");
                 if (hit.collider.CompareTag("menu_btn"))
                 {
+                    print("button selected");
                     ColorChangeOnClick(hit);
                     print(laserColor);
                 }

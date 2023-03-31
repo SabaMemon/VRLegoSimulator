@@ -4,14 +4,14 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - projectile
+  - Brick
+  - FxTemporaire
   - menu_btn
-
   - brick_2x1
   - brick_4x1
   - brick_1x1
-
   - prefab_btn
-
   layers:
   - Default
   - TransparentFX
