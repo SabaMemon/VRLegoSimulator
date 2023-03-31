@@ -54,7 +54,7 @@ public class Spawn : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
                 
-                if (hit.collider.CompareTag("Brick"))
+                if (hit.collider.CompareTag("brick_2x1"))
                 {
                     print("brick found");
                     Transform tempBrick = hit.collider.GetComponent<Transform>();
@@ -62,19 +62,21 @@ public class Spawn : MonoBehaviour
                     if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1f))
                     {
                         print("position works");
-                        //print("xAng = " + (int)tempBrick.eulerAngles.x);
-                        //print("zAng = " + (int)tempBrick.eulerAngles.z);
-                        //if(tempBrick.rotation.x < 0 && (int)tempBrick.eulerAngles.x >= 350)
-                        //{
-                        //    tempBrick.eulerAngles = new Vector3(0, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                        //}
-                        //if (tempBrick.rotation.z < 0 && (int)tempBrick.eulerAngles.z >= 350)
-                        //{
-                        //    tempBrick.eulerAngles = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, 0);
-                        //}
-                        //print("xAng2 = " + (int)tempBrick.eulerAngles.x);
-                        //print("zAng2 = " + (int)tempBrick.eulerAngles.z);
-                        if (((int)tempBrick.eulerAngles.x == 0 || (int)tempBrick.eulerAngles.x == -0) && ((int)tempBrick.eulerAngles.z == 0 || (int)tempBrick.eulerAngles.z == -0))
+                        /*print("xang = " + (int)tempbrick.eulerangles.x);
+                        print("zang = " + (int)tempbrick.eulerangles.z);
+                        if (tempbrick.rotation.x < 0 && (int)tempbrick.eulerangles.x >= 350)
+                        {
+                            tempbrick.eulerangles = new vector3(0, tempbrick.eulerangles.y, tempbrick.eulerangles.z);
+                        }
+                        if (tempbrick.rotation.z < 0 && (int)tempbrick.eulerangles.z >= 350)
+                        {
+                            tempbrick.eulerangles = new vector3(tempbrick.eulerangles.x, tempbrick.eulerangles.y, 0);
+                        }
+                        print("xang2 = " + (int)tempbrick.eulerangles.x);
+                        print("zang2 = " + (int)tempbrick.eulerangles.z);*/
+                        int xAng = (int)tempBrick.eulerAngles.x;
+                        int zAng = (int)tempBrick.eulerAngles.z;
+                        if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
                         {
                             print("angles work");
                             if (brickObj != null)
