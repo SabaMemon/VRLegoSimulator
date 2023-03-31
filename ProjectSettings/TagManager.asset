@@ -8,6 +8,7 @@ TagManager:
   - Brick
   - FxTemporaire
   - menu_btn
+  - prefab_btn
   layers:
   - Default
   - TransparentFX
