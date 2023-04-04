@@ -8,6 +8,9 @@ public class Spawn : MonoBehaviour
 {
     GameObject brickObj = null; //made public because it's referenced in multiple functions
     public GameObject brickPrefab;
+    public GameObject brick1x1Prefab;
+    public GameObject brick2x1Prefab;
+    public GameObject brick4x1Prefab;
     public Transform Controller;
 
     public float fireRate = 0.1f;
@@ -130,6 +133,25 @@ public class Spawn : MonoBehaviour
                 break;
             default:
                 brickMat = redBrick;
+                break;
+        }
+    }
+
+    public void SetBrick(int size)
+    {
+        switch (size)
+        {
+            case 1:
+                brickPrefab = brick1x1Prefab;
+                break;
+            case 2:
+                brickPrefab = brick2x1Prefab;
+                break;
+            case 3:
+                brickPrefab = brick4x1Prefab;
+                break;
+            default:
+                brickPrefab = brick2x1Prefab;
                 break;
         }
     }

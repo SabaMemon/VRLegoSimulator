@@ -14,8 +14,10 @@ public class MenuLineRendererSettings : MonoBehaviour
     float nextFire;
     bool activated = false;
     public Button btn;
+    public GameObject brickSize;
     Color laserColor = Color.red;
     public int brickColor = 1;
+    public int brickSizeSetting = 1;
     public Spawn spawn;
 
 
@@ -45,12 +47,13 @@ public class MenuLineRendererSettings : MonoBehaviour
             //if (Physics.Raycast(Controller.position, Controller.forward, out hit, 10f))
             {
                 laserLine.SetPosition(1, hit.point);
-                print("hitting");
                 if (hit.collider.CompareTag("menu_btn"))
                 {
-                    print("button selected");
                     ColorChangeOnClick(hit);
-                    print(laserColor);
+                }
+                else if (hit.collider.CompareTag("1x1_btn") || hit.collider.CompareTag("2x1_btn") || hit.collider.CompareTag("4x1_btn"))
+                {
+                    BrickChangeOnClick(hit);
                 }
             }
             else
@@ -123,31 +126,36 @@ public class MenuLineRendererSettings : MonoBehaviour
 
     public void BrickChangeOnClick(RaycastHit hit)
     {
+<<<<<<< Updated upstream
         //btn = hit.collider.CompareTag("prefab_btn");
+=======
+        brickSize = hit.collider.gameObject;
+>>>>>>> Stashed changes
 
-        if (btn != null)
+        if (brickSize != null)
         {
-            if (btn.name == "red_btn")
+            if (brickSize.CompareTag("1x1_btn"))
             {
-                laserColor = Color.red;
-                brickColor = 1;
+                print("1x1 selected");
+                brickSizeSetting = 1;
             }
-            else if (btn.name == "yellow_btn")
+            else if (brickSize.CompareTag("2x1_btn"))
             {
-                laserColor = Color.yellow;
-                brickColor = 2;
+                print("2x1 selected");
+                brickSizeSetting = 2;
             }
-            else if (btn.name == "green_btn")
+            else if (brickSize.CompareTag("4x1_btn"))
             {
-                laserColor = Color.green;
-                brickColor = 3;
+                print("4x1 selected");
+                brickSizeSetting = 3;
             }
             else
             {
-                brickColor = 1;
+                print("1x1 selected");
+                brickSizeSetting = 1;
             }
         }
-        spawn.SetBrickMat(brickColor);
+        spawn.SetBrick(brickSizeSetting);
     }
 
 }
