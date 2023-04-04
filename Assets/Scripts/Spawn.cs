@@ -63,6 +63,25 @@ public class Spawn : MonoBehaviour
                     {
                         Transform tempBrick = hit.collider.GetComponent<Transform>();
 
+                        if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f))
+                        {
+                            int xAng = (int)tempBrick.eulerAngles.x;
+                            int zAng = (int)tempBrick.eulerAngles.z;
+                            if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
+                            {
+                                Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z);
+                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                brickObj.transform.position = newPos;
+                                brickPut = true;
+                            }
+                        }
+                        if (brickPut == true)
+                        {
+                            brickObj.transform.eulerAngles = newRot;
+                            brickObj.transform.parent = tempBrick;
+                            brickObj = null;
+                            brickPut = false;
+                        }
                     }
                     else if (hit.collider.CompareTag("brick_1x1"))
                     {
@@ -73,26 +92,6 @@ public class Spawn : MonoBehaviour
                     {
 
                         Transform tempBrick = hit.collider.GetComponent<Transform>();
-                    }
-
-                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f))
-                    {
-                        int xAng = (int)tempBrick.eulerAngles.x;
-                        int zAng = (int)tempBrick.eulerAngles.z;
-                        if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
-                        {
-                            Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z);
-                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                            brickObj.transform.position = newPos;
-                            brickPut = true;
-                        }
-                    }
-                    if (brickPut == true)
-                    {
-                        brickObj.transform.eulerAngles = newRot;
-                        brickObj.transform.parent = tempBrick;
-                        brickObj = null;
-                        brickPut = false;
                     }
                 }
             }

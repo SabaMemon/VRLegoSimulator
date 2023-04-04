@@ -126,11 +126,7 @@ public class MenuLineRendererSettings : MonoBehaviour
 
     public void BrickChangeOnClick(RaycastHit hit)
     {
-<<<<<<< Updated upstream
-        //btn = hit.collider.CompareTag("prefab_btn");
-=======
         brickSize = hit.collider.gameObject;
->>>>>>> Stashed changes
 
         if (brickSize != null)
         {
