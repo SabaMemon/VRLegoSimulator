@@ -123,7 +123,7 @@ public class MenuLineRendererSettings : MonoBehaviour
 
     public void BrickChangeOnClick(RaycastHit hit)
     {
-        btn = hit.collider.CompareTag("prefab_btn");
+        //btn = hit.collider.CompareTag("prefab_btn");
 
         if (btn != null)
         {

@@ -54,30 +54,34 @@ public class Spawn : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
 
-                if (hit.collider.CompareTag("brick_2x1"))
+                if (brickObj != null)
                 {
-                    print("brick found");
-                    Transform tempBrick = hit.collider.GetComponent<Transform>();
+                    if (hit.collider.CompareTag("brick_2x1"))
+                    {
+                        Transform tempBrick = hit.collider.GetComponent<Transform>();
+
+                    }
+                    else if (hit.collider.CompareTag("brick_1x1"))
+                    {
+                        Transform tempBrick = hit.collider.GetComponent<Transform>();
+
+                    }
+                    else if (hit.collider.CompareTag("brick_4x1"))
+                    {
+
+                        Transform tempBrick = hit.collider.GetComponent<Transform>();
+                    }
 
                     if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f))
                     {
-                        print("position works");
                         int xAng = (int)tempBrick.eulerAngles.x;
                         int zAng = (int)tempBrick.eulerAngles.z;
                         if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
                         {
-                            print("angles work");
-                            if (brickObj != null)
-                            {
-                                if (tempBrick.parent == null)
-                                {
-                                    //brickObj.transform.parent = null;
-                                    Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z);
-                                    newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                                    brickObj.transform.position = newPos;
-                                    brickPut = true;
-                                }
-                            }
+                            Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z);
+                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                            brickObj.transform.position = newPos;
+                            brickPut = true;
                         }
                     }
                     if (brickPut == true)
