@@ -8,7 +8,6 @@ public class MenuLineRendererSettings : MonoBehaviour
     public Transform Controller;
     public float fireRate = 0.1f;
     float laserRange = 20f;
-    // RANGE NOT LONG ENOUGH - NUMBER NOT CHANGING RANGE??*******************************************
 
     WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
     LineRenderer laserLine;
@@ -121,23 +120,34 @@ public class MenuLineRendererSettings : MonoBehaviour
         }
         spawn.SetBrickMat(brickColor);
     }
-    //switch (expression)
-    //{
-    //    case 1:
 
-    //        laserLine.material.color = Color.yellow;
-    //        break;
-    //    case 2:
-    //        laserLine.material.color = Color.green;
-    //        break;
-    //    case 3:
-    //        laserLine.material.color = Color.blue;
-    //        break;
-    //    case 4:
-    //        laserLine.material.color = Color.purple;
-    //        break;
-    //    default:
-    //        laserLine.material.color = Color.red;
-    //        break;
-    //}
+    public void BrickChangeOnClick(RaycastHit hit)
+    {
+        btn = hit.collider.CompareTag("prefab_btn");
+
+        if (btn != null)
+        {
+            if (btn.name == "red_btn")
+            {
+                laserColor = Color.red;
+                brickColor = 1;
+            }
+            else if (btn.name == "yellow_btn")
+            {
+                laserColor = Color.yellow;
+                brickColor = 2;
+            }
+            else if (btn.name == "green_btn")
+            {
+                laserColor = Color.green;
+                brickColor = 3;
+            }
+            else
+            {
+                brickColor = 1;
+            }
+        }
+        spawn.SetBrickMat(brickColor);
+    }
+
 }

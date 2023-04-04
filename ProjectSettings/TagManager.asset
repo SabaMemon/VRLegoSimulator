@@ -9,6 +9,9 @@ TagManager:
   - brick_1x1
   - brick_2x1
   - brick_4x1
+  - 1x1_btn
+  - 2x1_btn
+  - 4x1_btn
   layers:
   - Default
   - TransparentFX
