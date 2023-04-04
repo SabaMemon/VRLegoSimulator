@@ -153,5 +153,4 @@ public class MenuLineRendererSettings : MonoBehaviour
         }
         spawn.SetBrick(brickSizeSetting);
     }
-
 }
