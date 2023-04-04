@@ -54,26 +54,14 @@ public class Spawn : MonoBehaviour
             {
                 laserLine.SetPosition(1, hit.point);
 
-                if (hit.collider.CompareTag("Brick"))
+                if (hit.collider.CompareTag("brick_2x1"))
                 {
                     print("brick found");
                     Transform tempBrick = hit.collider.GetComponent<Transform>();
 
-                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 1f))
+                    if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f))
                     {
                         print("position works");
-                        /*print("xAng = " + (int)tempBrick.eulerAngles.x);
-                        print("zAng = " + (int)tempBrick.eulerAngles.z);
-                        if (tempBrick.rotation.x < 0 && (int)tempBrick.eulerAngles.x >= 350)
-                        {
-                            tempBrick.eulerAngles = new Vector3(0, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                        }
-                        if (tempBrick.rotation.z < 0 && (int)tempBrick.eulerAngles.z >= 350)
-                        {
-                            tempBrick.eulerAngles = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, 0);
-                        }
-                        print("xAng2 = " + (int)tempBrick.eulerAngles.x);
-                        print("zAng2 = " + (int)tempBrick.eulerAngles.z);*/
                         int xAng = (int)tempBrick.eulerAngles.x;
                         int zAng = (int)tempBrick.eulerAngles.z;
                         if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
@@ -83,9 +71,8 @@ public class Spawn : MonoBehaviour
                             {
                                 if (tempBrick.parent == null)
                                 {
-                                    brickObj.transform.parent = null;
-                                    brickObj.GetComponent<Rigidbody>().isKinematic = false;
-                                    Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.36f, tempBrick.position.z);
+                                    //brickObj.transform.parent = null;
+                                    Vector3 newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z);
                                     newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
                                     brickObj.transform.position = newPos;
                                     brickPut = true;
@@ -96,6 +83,8 @@ public class Spawn : MonoBehaviour
                     if (brickPut == true)
                     {
                         brickObj.transform.eulerAngles = newRot;
+                        brickObj.transform.parent = tempBrick;
+                        brickObj = null;
                         brickPut = false;
                     }
                 }
