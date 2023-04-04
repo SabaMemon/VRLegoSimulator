@@ -220,7 +220,6 @@ public class Spawn : MonoBehaviour
             GameObject child = brickObj.transform.GetChild(i).gameObject;
             child.GetComponent<MeshRenderer>().material = brickMat;
         }
-
         brickObj.transform.position = Controller.position + Controller.forward * brickDistance;
         brickObj.transform.localRotation = Controller.rotation;
         brickObj.transform.Rotate(0, 0, 0, Space.Self);
