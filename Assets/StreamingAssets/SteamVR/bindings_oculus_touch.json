@@ -288,24 +288,6 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/spawn2x4"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/spawn2x4"
-                  }
-               },
-               "mode" : "button",
                "path" : "/user/hand/right/input/a"
             },
             {
@@ -315,25 +297,25 @@
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/dropbrick"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/dropbrick"
-                  }
-               },
-               "mode" : "button",
                "path" : "/user/hand/right/input/b"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/selectbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/trigger"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/selectbutton"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/trigger"
             },
             {
                "inputs" : {
@@ -356,20 +338,48 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/selectbutton"
+                     "output" : "/actions/default/in/menuactivate"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/trigger"
+               "path" : "/user/hand/left/input/system"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/selectbutton"
+                     "output" : "/actions/default/in/menuactivate"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
+               "path" : "/user/hand/right/input/system"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/user/hand/left/input/y"
+            },
+            {
+               "inputs" : {},
+               "mode" : "none",
+               "path" : "/user/hand/right/input/y"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/menuvisibility"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/menuvisibility"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/x"
             }
          ]
       },
@@ -406,7 +416,7 @@
    "controller_type" : "oculus_touch",
    "description" : "",
    "interaction_profile" : "",
-   "name" : "Saved TermProject [Testing] configuration for Oculus Touch Controller",
+   "name" : "Saved [Testing] TermProject configuration for Oculus Touch Controller",
    "options" : {},
    "simulated_actions" : []
 }

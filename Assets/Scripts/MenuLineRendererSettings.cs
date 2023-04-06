@@ -6,13 +6,21 @@ using UnityEngine.UI;
 public class MenuLineRendererSettings : MonoBehaviour
 {
     public Transform Controller;
-    public float fireRate = 0.1f;
-    float laserRange = 20f;
+    public GameObject Menu;
 
+    public float fireRate = 0.1f;
+    float laserRange = 10f;
     WaitForSeconds shotDuration = new WaitForSeconds(0.5f);
     LineRenderer laserLine;
     float nextFire;
+
+    float menuTime = 0f;
+    float menuRate = 0.5f;
+
+    bool canMenu = false;
+
     bool activated = false;
+    bool menuOn = false;
     public Button btn;
     public GameObject brickSize;
     Color laserColor = Color.red;
@@ -24,7 +32,7 @@ public class MenuLineRendererSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Menu.SetActive(false);
     }
 
     // Update is called once per frame
@@ -34,8 +42,16 @@ public class MenuLineRendererSettings : MonoBehaviour
         {
             laserLine.material.color = laserColor;
         }
+        if (Time.time > menuTime)
+        {
+            print("can Menu: " + canMenu);
+            print("menu on: " + menuOn);
+            canMenu = true;
+            menuTime += menuRate;
+        }
         if (Time.time > nextFire && activated == true)
         {
+            canMenu = true;
             nextFire = Time.time + fireRate;
             StartCoroutine(ShotEffect());
             Vector3 rayOrigin = Controller.position;
@@ -61,6 +77,7 @@ public class MenuLineRendererSettings : MonoBehaviour
                 laserLine.SetPosition(1, rayOrigin + (Controller.forward * laserRange));
             }
         }
+
     }
 
     public void ActivateLaser()
@@ -76,6 +93,32 @@ public class MenuLineRendererSettings : MonoBehaviour
     {
         activated = false;
         laserLine.enabled = false;
+    }
+
+    public void ActivateMenu()
+    {
+        print(menuOn);
+        if (menuOn == false && canMenu == true)
+        {
+            print("menu activated");
+            Menu.SetActive(true);
+            menuOn = true;
+            canMenu = false;
+        }
+        print("after on: " + menuOn);
+    }
+
+    public void DeactivateMenu()
+    {
+        print(menuOn);
+        if (menuOn && canMenu == true)
+        {
+            print("menu deactivated");
+            Menu.SetActive(false);
+            menuOn = false;
+            canMenu = false;
+        }
+        print("after off: " + menuOn);
     }
 
     private IEnumerator ShotEffect()
@@ -154,3 +197,4 @@ public class MenuLineRendererSettings : MonoBehaviour
         spawn.SetBrick(brickSizeSetting);
     }
 }
+

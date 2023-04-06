@@ -93,7 +93,7 @@ public class Spawn : MonoBehaviour
                             {
                                 if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
                                 {
-                                    if ((yAng >= 0 && yAng <46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
+                                    if ((yAng >= 0 && yAng < 46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
                                     {
                                         print("check x");
                                         if (laserLine.GetPosition(1).x > tempBrick.position.x)
