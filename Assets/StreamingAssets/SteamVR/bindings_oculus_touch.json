@@ -284,6 +284,24 @@
             {
                "inputs" : {
                   "click" : {
+                     "output" : "/actions/default/in/menuvisibility"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/left/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
+                     "output" : "/actions/default/in/menuvisibility"
+                  }
+               },
+               "mode" : "button",
+               "path" : "/user/hand/right/input/x"
+            },
+            {
+               "inputs" : {
+                  "click" : {
                      "output" : "/actions/default/in/spawn2x4"
                   }
                },
@@ -298,24 +316,6 @@
                },
                "mode" : "button",
                "path" : "/user/hand/right/input/b"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/selectbutton"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/trigger"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/selectbutton"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/trigger"
             },
             {
                "inputs" : {
@@ -338,48 +338,20 @@
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/menuactivate"
+                     "output" : "/actions/default/in/selectbutton"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/left/input/system"
+               "path" : "/user/hand/left/input/trigger"
             },
             {
                "inputs" : {
                   "click" : {
-                     "output" : "/actions/default/in/menuactivate"
+                     "output" : "/actions/default/in/selectbutton"
                   }
                },
                "mode" : "button",
-               "path" : "/user/hand/right/input/system"
-            },
-            {
-               "inputs" : {},
-               "mode" : "none",
-               "path" : "/user/hand/left/input/y"
-            },
-            {
-               "inputs" : {},
-               "mode" : "none",
-               "path" : "/user/hand/right/input/y"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/menuvisibility"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/left/input/x"
-            },
-            {
-               "inputs" : {
-                  "click" : {
-                     "output" : "/actions/default/in/menuvisibility"
-                  }
-               },
-               "mode" : "button",
-               "path" : "/user/hand/right/input/x"
+               "path" : "/user/hand/right/input/trigger"
             }
          ]
       },
@@ -416,7 +388,7 @@
    "controller_type" : "oculus_touch",
    "description" : "",
    "interaction_profile" : "",
-   "name" : "Saved [Testing] TermProject configuration for Oculus Touch Controller",
+   "name" : "Saved TermProject [Testing] configuration for Oculus Touch Controller",
    "options" : {},
    "simulated_actions" : []
 }
