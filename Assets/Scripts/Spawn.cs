@@ -63,6 +63,8 @@ public class Spawn : MonoBehaviour
                     if (hit.collider.CompareTag("brick_2x1"))
                     {
                         Transform tempBrick = hit.collider.GetComponent<Transform>();
+                        Transform childTransform0 = tempBrick.transform.GetChild(0).gameObject.transform;
+                        Transform childTransform1 = tempBrick.transform.GetChild(1).gameObject.transform;
                         int xAng = (int)tempBrick.eulerAngles.x;
                         int zAng = (int)tempBrick.eulerAngles.z;
                         int yAng = (int)tempBrick.eulerAngles.y;
@@ -82,11 +84,19 @@ public class Spawn : MonoBehaviour
                                         print("check x");
                                         if (laserLine.GetPosition(1).x > tempBrick.position.x)
                                         {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x + 0.125f, tempBrick.position.y + 0.2501f, tempBrick.position.z);
+                                            brickObj.transform.position = newPos;
+                                            brickObj.transform.parent = childTransform0;
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
                                         }
-                                        else if (laserLine.GetPosition(1).x > tempBrick.position.x)
+                                        else if (laserLine.GetPosition(1).x < tempBrick.position.x)
                                         {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x - 0.125f, tempBrick.position.y + 0.2501f, tempBrick.position.z);
+                                            brickObj.transform.position = newPos;
+                                            brickObj.transform.parent = childTransform0;
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
                                         }
                                     }
                                     else
@@ -94,22 +104,30 @@ public class Spawn : MonoBehaviour
                                         print("check z");
                                         if (laserLine.GetPosition(1).z > tempBrick.position.z)
                                         {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z + 0.125f);
+                                            brickObj.transform.position = newPos;
+                                            brickObj.transform.parent = childTransform0;
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
                                         }
                                         else if (laserLine.GetPosition(1).z > tempBrick.position.z)
                                         {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
                                             newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z - 0.125f);
+                                            brickObj.transform.position = newPos;
+                                            brickObj.transform.parent = childTransform0;
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
                                         }
                                     }
-                                    newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                                    brickObj.transform.position = newPos;
-                                    brickPut = true;
+                                    //newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                    //brickObj.transform.position = newPos;
+                                    brickObj = null;
                                 }
                             }
                             if (brickPut == true)
                             {
-                                brickObj.transform.eulerAngles = newRot;
-                                brickObj.transform.parent = tempBrick;
+                                //brickObj.transform.eulerAngles = newRot;
+                                //brickObj.transform.parent = tempBrick;
                                 brickObj = null;
                                 brickPut = false;
                             }
@@ -153,6 +171,7 @@ public class Spawn : MonoBehaviour
             brickObj.transform.eulerAngles = new Vector3(0, yRotation, 0);
             brickObj.transform.parent = null;
             brickObj.GetComponent<Rigidbody>().isKinematic = false;
+            brickObj = null;
             drop = false;
         }
 
@@ -174,6 +193,7 @@ public class Spawn : MonoBehaviour
         {
             brickObj.transform.eulerAngles = newRot;
             brickObj.transform.parent = tempBrick;
+            brickObj.GetComponent<Rigidbody>().isKinematic = true;
             brickObj = null;
             brickPut = false;
         }
