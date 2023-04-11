@@ -75,7 +75,7 @@ public class Spawn : MonoBehaviour
                         }
                         else if (brickObj.CompareTag("brick_1x1"))
                         {
-                            if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.75f))
+                            if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.5f))
                             {
                                 if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
                                 {
@@ -86,17 +86,23 @@ public class Spawn : MonoBehaviour
                                         {
                                             tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x + 0.125f, tempBrick.position.y + 0.2501f, tempBrick.position.z);
-                                            brickObj.transform.position = newPos;
-                                            brickObj.transform.parent = childTransform0;
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(0.25f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
                                         }
                                         else if (laserLine.GetPosition(1).x < tempBrick.position.x)
                                         {
                                             tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x - 0.125f, tempBrick.position.y + 0.2501f, tempBrick.position.z);
-                                            brickObj.transform.position = newPos;
-                                            brickObj.transform.parent = childTransform0;
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(-0.25f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
                                         }
                                     }
                                     else
@@ -106,27 +112,30 @@ public class Spawn : MonoBehaviour
                                         {
                                             tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng); 
                                             newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z + 0.125f);
-                                            brickObj.transform.position = newPos;
-                                            brickObj.transform.parent = childTransform0;
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(-0.25f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
                                         }
-                                        else if (laserLine.GetPosition(1).z > tempBrick.position.z)
+                                        else if (laserLine.GetPosition(1).z < tempBrick.position.z)
                                         {
                                             tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
                                             newPos = new Vector3(tempBrick.position.x, tempBrick.position.y + 0.2501f, tempBrick.position.z - 0.125f);
-                                            brickObj.transform.position = newPos;
-                                            brickObj.transform.parent = childTransform0;
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng); 
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(0.25f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
                                         }
                                     }
-                                    //newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                                    //brickObj.transform.position = newPos;
-                                    brickObj = null;
                                 }
                             }
                             if (brickPut == true)
-                            {
-                                //brickObj.transform.eulerAngles = newRot;
+                            { 
+                                brickObj.transform.localEulerAngles = newRot;
                                 //brickObj.transform.parent = tempBrick;
                                 brickObj = null;
                                 brickPut = false;
