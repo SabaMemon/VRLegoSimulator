@@ -207,28 +207,100 @@ public class Spawn : MonoBehaviour
                                                 brickPut = true;
                                             }
                                         }
+                                        else // offset!
+                                        {
+                                            if (((laserLine.GetPosition(1).x > tempBrick.position.x) && (laserLine.GetPosition(1).x <= tempBrick.position.x + 0.25f)) ||
+                                                ((laserLine.GetPosition(1).x <= tempBrick.position.x) && (laserLine.GetPosition(1).x >= tempBrick.position.x - 0.25f)))
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).x < tempBrick.position.x - 0.25f)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).x > tempBrick.position.x + 0.25f)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                        }
+
                                     }
                                     else
                                     {
-                                        if (laserLine.GetPosition(1).z > tempBrick.position.z)
+                                        if (offsetMode == false)
                                         {
-                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
-                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);//DO NOT REMOVE
-                                            brickObj.transform.parent = tempBrick;
-                                            brickObj.transform.localPosition = new Vector3(-0.25f, 1.01f, 0f);
-                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
-                                            brickPut = true;
+                                            if (laserLine.GetPosition(1).z > tempBrick.position.z)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);//DO NOT REMOVE
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(-0.25f, 1.01f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).z < tempBrick.position.z)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0.25f, 1.01f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
                                         }
-                                        else if (laserLine.GetPosition(1).z < tempBrick.position.z)
+                                        else // offset!
                                         {
-                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
-                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
-                                            brickObj.transform.parent = tempBrick;
-                                            brickObj.transform.localPosition = new Vector3(0.25f, 1.01f, 0f);
-                                            brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
-                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
-                                            brickPut = true;
+                                            if (((laserLine.GetPosition(1).z > tempBrick.position.z) && (laserLine.GetPosition(1).z <= tempBrick.position.z + 0.25f)) ||
+                                                ((laserLine.GetPosition(1).z <= tempBrick.position.z) && (laserLine.GetPosition(1).z >= tempBrick.position.z - 0.25f)))
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).z < tempBrick.position.z - 0.25f) //right
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).z > tempBrick.position.z + 0.25f) //left
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(0.5f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
                                         }
                                     }
                                 }
