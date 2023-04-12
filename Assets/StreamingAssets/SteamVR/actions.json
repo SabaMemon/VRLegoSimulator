@@ -50,7 +50,7 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/Spawn2x4",
+      "name": "/actions/default/in/SpawnBrick",
       "type": "boolean"
     },
     {
@@ -67,6 +67,10 @@
     },
     {
       "name": "/actions/default/in/MenuVisibility",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/OffsetMode",
       "type": "boolean"
     },
     {

@@ -105,11 +105,11 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean Spawn2x4
+        public virtual SteamVR_Action_Boolean SpawnBrick
         {
             get
             {
-                return SteamVR_Actions.default_Spawn2x4;
+                return SteamVR_Actions.default_SpawnBrick;
             }
         }
         
@@ -142,6 +142,14 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_MenuVisibility;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean OffsetMode
+        {
+            get
+            {
+                return SteamVR_Actions.default_OffsetMode;
             }
         }
         

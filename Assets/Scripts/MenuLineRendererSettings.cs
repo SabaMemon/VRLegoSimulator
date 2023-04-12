@@ -44,8 +44,6 @@ public class MenuLineRendererSettings : MonoBehaviour
         }
         if (Time.time > menuTime)
         {
-            print("can Menu: " + canMenu);
-            print("menu on: " + menuOn);
             canMenu = true;
             menuTime += menuRate;
         }
@@ -97,28 +95,22 @@ public class MenuLineRendererSettings : MonoBehaviour
 
     public void ActivateMenu()
     {
-        print(menuOn);
         if (menuOn == false && canMenu == true)
         {
-            print("menu activated");
             Menu.SetActive(true);
             menuOn = true;
             canMenu = false;
         }
-        print("after on: " + menuOn);
     }
 
     public void DeactivateMenu()
     {
-        print(menuOn);
         if (menuOn && canMenu == true)
         {
-            print("menu deactivated");
             Menu.SetActive(false);
             menuOn = false;
             canMenu = false;
         }
-        print("after off: " + menuOn);
     }
 
     private IEnumerator ShotEffect()
@@ -175,26 +167,21 @@ public class MenuLineRendererSettings : MonoBehaviour
         {
             if (brickSize.CompareTag("1x1_btn"))
             {
-                print("1x1 selected");
                 brickSizeSetting = 1;
             }
             else if (brickSize.CompareTag("2x1_btn"))
             {
-                print("2x1 selected");
                 brickSizeSetting = 2;
             }
             else if (brickSize.CompareTag("4x1_btn"))
             {
-                print("4x1 selected");
                 brickSizeSetting = 3;
             }
             else
             {
-                print("1x1 selected");
                 brickSizeSetting = 1;
             }
         }
         spawn.SetBrick(brickSizeSetting);
     }
 }
-
