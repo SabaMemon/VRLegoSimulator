@@ -20,7 +20,7 @@ public class MenuLineRendererSettings : MonoBehaviour
     bool canMenu = false;
 
     bool activated = false;
-    bool menuOn = false;
+    bool menuOn = true;
     public Button btn;
     public GameObject brickSize;
     Color laserColor = Color.red;
@@ -32,7 +32,7 @@ public class MenuLineRendererSettings : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Menu.SetActive(false);
+        Menu.SetActive(true);
     }
 
     // Update is called once per frame
