@@ -45,11 +45,13 @@ namespace Valve.VR
         
         private static SteamVR_Action_Boolean p_default_MenuLaser;
         
-        private static SteamVR_Action_Boolean p_default_SelectButton;
-        
         private static SteamVR_Action_Boolean p_default_MenuVisibility;
         
         private static SteamVR_Action_Boolean p_default_OffsetMode;
+        
+        private static SteamVR_Action_Boolean p_default_DeleteBrick;
+        
+        private static SteamVR_Action_Boolean p_default_DeleteLaser;
         
         private static SteamVR_Action_Vibration p_default_Haptic;
         
@@ -179,14 +181,6 @@ namespace Valve.VR
             }
         }
         
-        public static SteamVR_Action_Boolean default_SelectButton
-        {
-            get
-            {
-                return SteamVR_Actions.p_default_SelectButton.GetCopy<SteamVR_Action_Boolean>();
-            }
-        }
-        
         public static SteamVR_Action_Boolean default_MenuVisibility
         {
             get
@@ -200,6 +194,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.p_default_OffsetMode.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_DeleteBrick
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_DeleteBrick.GetCopy<SteamVR_Action_Boolean>();
+            }
+        }
+        
+        public static SteamVR_Action_Boolean default_DeleteLaser
+        {
+            get
+            {
+                return SteamVR_Actions.p_default_DeleteLaser.GetCopy<SteamVR_Action_Boolean>();
             }
         }
         
@@ -284,9 +294,10 @@ namespace Valve.VR
                     SteamVR_Actions.default_SpawnBrick,
                     SteamVR_Actions.default_DropBrick,
                     SteamVR_Actions.default_MenuLaser,
-                    SteamVR_Actions.default_SelectButton,
                     SteamVR_Actions.default_MenuVisibility,
                     SteamVR_Actions.default_OffsetMode,
+                    SteamVR_Actions.default_DeleteBrick,
+                    SteamVR_Actions.default_DeleteLaser,
                     SteamVR_Actions.default_Haptic,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
@@ -310,9 +321,10 @@ namespace Valve.VR
                     SteamVR_Actions.default_SpawnBrick,
                     SteamVR_Actions.default_DropBrick,
                     SteamVR_Actions.default_MenuLaser,
-                    SteamVR_Actions.default_SelectButton,
                     SteamVR_Actions.default_MenuVisibility,
                     SteamVR_Actions.default_OffsetMode,
+                    SteamVR_Actions.default_DeleteBrick,
+                    SteamVR_Actions.default_DeleteLaser,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -338,9 +350,10 @@ namespace Valve.VR
                     SteamVR_Actions.default_SpawnBrick,
                     SteamVR_Actions.default_DropBrick,
                     SteamVR_Actions.default_MenuLaser,
-                    SteamVR_Actions.default_SelectButton,
                     SteamVR_Actions.default_MenuVisibility,
                     SteamVR_Actions.default_OffsetMode,
+                    SteamVR_Actions.default_DeleteBrick,
+                    SteamVR_Actions.default_DeleteLaser,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Brake,
                     SteamVR_Actions.buggy_Reset};
@@ -366,9 +379,10 @@ namespace Valve.VR
                     SteamVR_Actions.default_SpawnBrick,
                     SteamVR_Actions.default_DropBrick,
                     SteamVR_Actions.default_MenuLaser,
-                    SteamVR_Actions.default_SelectButton,
                     SteamVR_Actions.default_MenuVisibility,
                     SteamVR_Actions.default_OffsetMode,
+                    SteamVR_Actions.default_DeleteBrick,
+                    SteamVR_Actions.default_DeleteLaser,
                     SteamVR_Actions.platformer_Move,
                     SteamVR_Actions.platformer_Jump,
                     SteamVR_Actions.buggy_Steering,
@@ -393,9 +407,10 @@ namespace Valve.VR
             SteamVR_Actions.p_default_SpawnBrick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SpawnBrick")));
             SteamVR_Actions.p_default_DropBrick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DropBrick")));
             SteamVR_Actions.p_default_MenuLaser = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/MenuLaser")));
-            SteamVR_Actions.p_default_SelectButton = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/SelectButton")));
             SteamVR_Actions.p_default_MenuVisibility = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/MenuVisibility")));
             SteamVR_Actions.p_default_OffsetMode = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/OffsetMode")));
+            SteamVR_Actions.p_default_DeleteBrick = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DeleteBrick")));
+            SteamVR_Actions.p_default_DeleteLaser = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/default/in/DeleteLaser")));
             SteamVR_Actions.p_default_Haptic = ((SteamVR_Action_Vibration)(SteamVR_Action.Create<SteamVR_Action_Vibration>("/actions/default/out/Haptic")));
             SteamVR_Actions.p_platformer_Move = ((SteamVR_Action_Vector2)(SteamVR_Action.Create<SteamVR_Action_Vector2>("/actions/platformer/in/Move")));
             SteamVR_Actions.p_platformer_Jump = ((SteamVR_Action_Boolean)(SteamVR_Action.Create<SteamVR_Action_Boolean>("/actions/platformer/in/Jump")));

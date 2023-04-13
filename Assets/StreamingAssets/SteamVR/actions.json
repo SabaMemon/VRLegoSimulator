@@ -62,15 +62,19 @@
       "type": "boolean"
     },
     {
-      "name": "/actions/default/in/SelectButton",
-      "type": "boolean"
-    },
-    {
       "name": "/actions/default/in/MenuVisibility",
       "type": "boolean"
     },
     {
       "name": "/actions/default/in/OffsetMode",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/DeleteBrick",
+      "type": "boolean"
+    },
+    {
+      "name": "/actions/default/in/DeleteLaser",
       "type": "boolean"
     },
     {

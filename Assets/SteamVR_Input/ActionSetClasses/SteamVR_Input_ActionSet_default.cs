@@ -129,14 +129,6 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean SelectButton
-        {
-            get
-            {
-                return SteamVR_Actions.default_SelectButton;
-            }
-        }
-        
         public virtual SteamVR_Action_Boolean MenuVisibility
         {
             get
@@ -150,6 +142,22 @@ namespace Valve.VR
             get
             {
                 return SteamVR_Actions.default_OffsetMode;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean DeleteBrick
+        {
+            get
+            {
+                return SteamVR_Actions.default_DeleteBrick;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean DeleteLaser
+        {
+            get
+            {
+                return SteamVR_Actions.default_DeleteLaser;
             }
         }
         

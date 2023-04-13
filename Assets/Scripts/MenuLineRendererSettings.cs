@@ -99,18 +99,6 @@ public class MenuLineRendererSettings : MonoBehaviour
         if (menuOn == false && canMenu == true)
         {
             Menu.SetActive(true);
-            //Menu.transform.parent = Camera;
-            //Menu.transform.localEulerAngles = new Vector3(Menu.transform.eulerAngles.x, Camera.eulerAngles.y, Menu.transform.eulerAngles.z);
-            //float yAng = Camera.eulerAngles.y;
-            //if ((yAng >= 0 && yAng < 46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
-            //{
-            //    Menu.transform.position = new Vector3(Camera.position.x, 0f, Camera.position.z + 2f);
-            //}
-            //else
-            //{
-            //    Menu.transform.position = new Vector3(Camera.position.x + 2f, 0f, Camera.position.z);
-            //}
-            //Menu.transform.parent = null;
             menuOn = true;
             canMenu = false;
         }

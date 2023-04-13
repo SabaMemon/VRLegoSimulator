@@ -41,8 +41,8 @@ public class Spawn : MonoBehaviour
     void Start()
     {
         laserLine = GetComponent<LineRenderer>();
-        laserLine.material = new Material(Shader.Find("Sprites/Default"));
-        laserLine.material.color = Color.red;
+        //laserLine.material = new Material(Shader.Find("Sprites/Default"));
+        //laserLine.material.color = Color.red;
 
         offsetText.SetActive(false);
     }
