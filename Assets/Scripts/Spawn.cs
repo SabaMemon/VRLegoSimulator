@@ -27,6 +27,7 @@ public class Spawn : MonoBehaviour
 
     float brickDistance = 0.1f;
     bool drop = false;
+    Vector3 newRot = new Vector3(0, 0, 0);
     bool brickPut = false;
     bool offsetMode = false;
     float offsetTime = 0f;
@@ -50,7 +51,6 @@ public class Spawn : MonoBehaviour
     void Update()
     {
         float yRotation = Controller.eulerAngles.y;
-        Vector3 newRot = new Vector3(0, 0, 0);
         Vector3 newPos = new Vector3(0, 0, 0);
 
         if (Time.time > offsetTime)
@@ -215,7 +215,92 @@ public class Spawn : MonoBehaviour
                         }
                         else if (brickObj.CompareTag("brick_4x1"))
                         {
-
+                            if (offsetMode == false)
+                            {
+                                if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.5f))
+                                {
+                                    if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
+                                    {
+                                        if ((yAng >= 0 && yAng < 46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
+                                        {
+                                            if (laserLine.GetPosition(1).x > tempBrick.position.x)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).x < tempBrick.position.x)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                        }
+                                        else
+                                        {
+                                            if (laserLine.GetPosition(1).z > tempBrick.position.z)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                            else if (laserLine.GetPosition(1).z < tempBrick.position.z)
+                                            {
+                                                tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                                newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                                brickObj.transform.parent = tempBrick;
+                                                brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                                brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                                tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                                brickPut = true;
+                                            }
+                                        }
+                                    }
+                                }
+                                if (brickPut == true)
+                                {
+                                    brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
+                                    brickObj = null;
+                                    brickPut = false;
+                                }
+                            }
+                            else //OFFSET MODEEeee
+                            {
+                                if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.5f))
+                                {
+                                    if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
+                                    {
+                                        if ((yAng >= 0 && yAng < 46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
+                                        {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(0f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
+                                        }
+                                    }
+                                }
+                                if (brickPut == true)
+                                {
+                                    brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
+                                    brickObj = null;
+                                    brickPut = false;
+                                }
+                            }
                         }
                     }
                     else if (hit.collider.CompareTag("brick_1x1"))
@@ -223,10 +308,72 @@ public class Spawn : MonoBehaviour
                         Transform tempBrick = hit.collider.GetComponent<Transform>();
                         int xAng = (int)tempBrick.eulerAngles.x;
                         int zAng = (int)tempBrick.eulerAngles.z;
+                        int yAng = (int)tempBrick.eulerAngles.y;
 
                         if (brickObj.CompareTag("brick_1x1")) //For brick attached to controller
                         {
                             StackSameBrick(tempBrick, xAng, zAng, newPos, newRot);
+                        }
+                        else if (brickObj.CompareTag("brick_2x1"))
+                        {
+                            if (((laserLine.GetPosition(1) - laserLine.GetPosition(0)).magnitude <= 0.5f))
+                            {
+                                if (((xAng >= 0 && xAng <= 1) && (zAng >= 0 && zAng <= 1)) || (xAng >= 358 && xAng <= 359) && (zAng >= 358 && zAng <= 359))
+                                {
+                                    if ((yAng >= 0 && yAng < 46) || (yAng >= 136 && yAng < 226) || (yAng >= 316 && yAng < 360))
+                                    {
+                                        if (laserLine.GetPosition(1).x > tempBrick.position.x)
+                                        {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
+                                        }
+                                        else if (laserLine.GetPosition(1).x < tempBrick.position.x)
+                                        {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (laserLine.GetPosition(1).z > tempBrick.position.z)
+                                        {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(-0.5f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
+                                        }
+                                        else if (laserLine.GetPosition(1).z < tempBrick.position.z)
+                                        {
+                                            tempBrick.eulerAngles = new Vector3(xAng, 0f, zAng);
+                                            newRot = new Vector3(tempBrick.eulerAngles.x, tempBrick.eulerAngles.y, tempBrick.eulerAngles.z);
+                                            brickObj.transform.parent = tempBrick;
+                                            brickObj.transform.localPosition = new Vector3(0.5f, 1f, 0f);
+                                            brickObj.transform.localScale = new Vector3(2f, 1f, 1f);
+                                            tempBrick.eulerAngles = new Vector3(xAng, yAng, zAng);
+                                            brickPut = true;
+                                        }
+                                    }
+                                }
+                            }
+                            if (brickPut == true)
+                            {
+                                brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
+                                brickObj = null;
+                                brickPut = false;
+                            }
                         }
                     }
                     else if (hit.collider.CompareTag("brick_4x1"))
@@ -436,7 +583,7 @@ public class Spawn : MonoBehaviour
                             }
                             if (brickPut == true)
                             {
-                                brickObj.transform.localEulerAngles = newRot;//DO NOT REMOVE
+                                brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
                                 brickObj = null;
                                 brickPut = false;
                             }
@@ -537,7 +684,7 @@ public class Spawn : MonoBehaviour
                             }
                             if (brickPut == true)
                             {
-                                brickObj.transform.localEulerAngles = newRot;//DO NOT REMOVE
+                                brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
                                 brickObj = null;
                                 brickPut = false;
                             }
@@ -578,6 +725,17 @@ public class Spawn : MonoBehaviour
             brickObj.transform.eulerAngles = newRot;
             brickObj.transform.parent = tempBrick;
             brickObj.GetComponent<Rigidbody>().isKinematic = true;
+            brickObj = null;
+            brickPut = false;
+        }
+    }
+
+    void BrickPut(bool brickPut)
+    {
+        print(brickPut);
+        if (brickPut == true)
+        {
+            brickObj.transform.localEulerAngles = newRot; //DO NOT REMOVE
             brickObj = null;
             brickPut = false;
         }
